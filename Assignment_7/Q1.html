@@ -1,1 +1,57 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Guess the number</title>  
+    <style>  
+        body {  
+            font-family: Arial, Helvetica, sans-serif;  
+            text-align: center;  
+            padding: 50px;  
+        }  
+        input, button {  
+            padding: 10px;  
+            margin: 5px;  
+            font-size: 16px;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <h1>Guess the number</h1>  
+    <p>Guess a number between 1 and 100:</p>  
+    <input type="number" id="userguess" placeholder="Enter your guess">  
+    <button onclick="guessNumber()">Guess</button>  
+    <p id="message"></p> <!-- Added to display the result message -->  
 
+    <script>  
+        // Generate a random number between 1 and 100  
+        const randomnumber = Math.floor(Math.random() * 100) + 1;  
+        let attempts = 0;  
+        const maxattempts = 5;  
+
+        function guessNumber() {  
+            const userguess = parseInt(document.getElementById('userguess').value);  
+            attempts++;  
+
+            // Clear previous message  
+            const messageElement = document.getElementById('message');  
+            messageElement.textContent = "";  
+
+            if (userguess === randomnumber) {  
+                messageElement.textContent = `Congratulations! You have guessed the correct number in ${attempts} attempts`;  
+                messageElement.style.color = "green";  
+            } else if (attempts >= maxattempts) {  
+                messageElement.textContent = `You have reached the maximum number of attempts. The number was ${randomnumber}`;  
+                messageElement.style.color = "red";  
+            } else if (userguess > randomnumber) {  
+                messageElement.textContent = "Too high. Try again!";  
+                messageElement.style.color = "red";  
+            } else if (userguess < randomnumber) {  
+                messageElement.textContent = "Too low. Try again!";  
+                messageElement.style.color = "red";  
+            }  
+        }  
+    </script>  
+</body>  
+</html>
