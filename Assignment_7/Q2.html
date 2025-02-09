@@ -1,0 +1,47 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Guess the number</title>  
+    <style>  
+        body {  
+            font-family: Arial, Helvetica, sans-serif;  
+            text-align: center;  
+            padding: 50px;  
+        }  
+        input, button {  
+            padding: 10px;  
+            margin: 5px;  
+            font-size: 16px;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <h1>PRINT NUMBERS FROM 1 TO 50</h1>    
+    <p id="message">Enter a number:</p>
+    <input type="number" id="userInput" min="1" max="50">
+    <button onclick="printNumber()">Submit</button>
+    
+    <p id="output"></p> 
+    
+    <script>  
+        function printNumber() {  
+            const userInput = document.getElementById('userInput').value;
+            let output = ''; 
+            for (let i = 1; i <= userInput; i++) {
+                if (i % 3 == 0 && i % 5 == 0) {
+                    output += 'FizzBuzz<br>';  
+                } else if (i % 3 == 0) {
+                    output += 'Fizz<br>';
+                } else if (i % 5 == 0) {
+                    output += 'Buzz<br>';
+                } else {
+                    output += i + '<br>';
+                }
+            }
+            document.getElementById('output').innerHTML = output; 
+        }
+    </script>  
+</body>  
+</html>
